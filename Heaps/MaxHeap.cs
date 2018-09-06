@@ -6,7 +6,7 @@ namespace Heaps
         private long[] _array;
         public int HeapSize { get; private set; }
         public MaxHeap(long[] array)
-        {
+        { 
             _array = array;
         }
 
@@ -15,16 +15,15 @@ namespace Heaps
         public int Right(int i) { return 2 * i + 2; }
 
         public void MaxHeapify(int i) {
+            
             var l = Left(i);
             var r = Right(i);
-            int largest = 0;
+            int largest = i;
 
-            if (l < HeapSize && _array[l] > _array[i])
-                largest = l;
-            else
-                largest = i;
-            if (r < HeapSize && _array[r] > _array[i]) 
-                largest = r;
+            if (l < HeapSize && _array[l] > _array[largest])
+                    largest = l;
+            if (r < HeapSize && _array[r] > _array[largest])
+                    largest = r;
             if (largest != i) 
             {
                 Swap(ref _array[i], ref _array[largest]);
